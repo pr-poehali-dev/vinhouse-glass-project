@@ -234,68 +234,57 @@ export default function Index() {
         )}
       </header>
 
-      {/* ===== HERO ===== */}
-      <section
-        id="home"
-        className="relative min-h-screen flex items-center overflow-hidden"
-        style={{
-          background: "linear-gradient(135deg, #f5f6f7 0%, #eef0f2 40%, #e8ecee 100%)",
-        }}
-      >
-        {/* Декоративный фон */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              0deg, transparent, transparent 59px,
-              var(--brand-teal) 59px, var(--brand-teal) 60px
-            ), repeating-linear-gradient(
-              90deg, transparent, transparent 59px,
-              var(--brand-teal) 59px, var(--brand-teal) 60px
-            )`,
-          }}
-        />
-
-        {/* Фото справа */}
-        <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:block">
+      {/* ===== HERO / ОБЛОЖКА ===== */}
+      <section id="home" className="relative min-h-screen flex items-end overflow-hidden">
+        {/* Фоновое фото на весь экран */}
+        <div className="absolute inset-0">
           <img
-            src="https://cdn.poehali.dev/projects/2456b3b6-fcde-43e4-ae3b-bcb7daeeee88/files/7e6cf168-20bf-43c7-84da-0b31fe31bc88.jpg"
-            alt="Остекление дома"
+            src="https://cdn.poehali.dev/projects/2456b3b6-fcde-43e4-ae3b-bcb7daeeee88/files/057ed359-e72f-4a44-a012-d83c453d0ab6.jpg"
+            alt="ВинХАУС — остекление"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f5f6f7] via-[#f5f6f7]/40 to-transparent" />
+          {/* Затемнение — снизу темнее, сверху светлее */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1a1f25]/90 via-[#1a1f25]/40 to-[#1a1f25]/10" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 pt-24 pb-16 w-full">
-          <div className="max-w-xl">
+        {/* Логотип поверх хедера (только на hero) */}
+        <div className="absolute top-0 left-0 right-0 h-16 flex items-center justify-center pointer-events-none">
+          <div className="w-full h-16 bg-gradient-to-b from-black/20 to-transparent" />
+        </div>
+
+        {/* Контент */}
+        <div className="relative w-full max-w-7xl mx-auto px-6 pb-20 pt-32">
+          <div className="max-w-3xl">
             {/* Бэйдж */}
-            <div className="anim-fade-up delay-1 inline-flex items-center gap-2 bg-white/80 border border-[var(--brand-teal)]/20 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 rounded-full bg-[var(--brand-teal)]" />
-              <span className="text-xs font-golos font-medium text-[var(--brand-teal)]">
+            <div className="anim-fade-up delay-1 inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 mb-7">
+              <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-teal)]" />
+              <span className="text-xs font-golos font-medium text-white/80 tracking-wide">
                 Красноярск · Более 12 лет на рынке
               </span>
             </div>
 
-            <h1 className="anim-fade-up delay-2 font-cormorant text-5xl md:text-6xl lg:text-7xl font-light leading-[1.05] text-[var(--brand-dark)] mb-6">
-              Остекление
+            <h1 className="anim-fade-up delay-2 font-cormorant text-5xl md:text-6xl lg:text-[5.5rem] font-light leading-[1.0] text-white mb-6">
+              Остекление домов,
               <br />
-              <em className="not-italic text-[var(--brand-teal)]">под ключ</em>
+              <em className="not-italic text-[var(--brand-teal)]">террас и беседок</em>
+              <br />
+              под ключ
             </h1>
 
-            <p className="anim-fade-up delay-3 font-golos text-base md:text-lg text-foreground/60 leading-relaxed mb-8 max-w-md">
-              Дома, террасы, беседки, балконы и зимние сады. Напрямую от производителя
-              без наценок — монтаж, доставка и гарантия уже включены.
+            <p className="anim-fade-up delay-3 font-golos text-base md:text-lg text-white/60 leading-relaxed mb-10 max-w-lg">
+              Напрямую от производителя без наценок — монтаж, доставка и гарантия до&nbsp;10&nbsp;лет уже включены.
             </p>
 
-            {/* Преимущества */}
-            <div className="anim-fade-up delay-4 flex flex-wrap gap-4 mb-10">
+            {/* Теги */}
+            <div className="anim-fade-up delay-4 flex flex-wrap gap-3 mb-10">
               {[
                 { icon: "Shield", text: "Гарантия до 10 лет" },
                 { icon: "Truck", text: "Бесплатный замер" },
-                { icon: "Star", text: "1 800+ объектов" },
+                { icon: "CheckCircle", text: "1 800+ объектов" },
+                { icon: "Clock", text: "Срок от 2 недель" },
               ].map((b) => (
-                <div key={b.text} className="flex items-center gap-2 text-sm text-foreground/60">
-                  <Icon name={b.icon} size={15} className="text-[var(--brand-teal)]" />
+                <div key={b.text} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-3.5 py-1.5 text-sm text-white/75">
+                  <Icon name={b.icon} size={13} className="text-[var(--brand-teal)]" />
                   {b.text}
                 </div>
               ))}
@@ -304,14 +293,14 @@ export default function Index() {
             <div className="anim-fade-up delay-5 flex flex-col sm:flex-row gap-3">
               <a
                 href="#contacts"
-                className="btn-teal inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md font-golos font-semibold text-sm"
+                className="btn-teal inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md font-golos font-semibold text-sm"
               >
                 Рассчитать стоимость
                 <Icon name="ArrowRight" size={16} />
               </a>
               <a
                 href="#portfolio"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-md font-golos font-medium text-sm border border-[var(--brand-gray)]/40 hover:border-[var(--brand-teal)] text-foreground/70 hover:text-[var(--brand-teal)] transition-all"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md font-golos font-medium text-sm border border-white/25 text-white/80 hover:border-white/50 hover:text-white transition-all backdrop-blur-sm"
               >
                 Смотреть работы
               </a>
@@ -320,9 +309,9 @@ export default function Index() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-40">
-          <span className="text-xs font-golos tracking-widest uppercase">Scroll</span>
-          <Icon name="ChevronDown" size={16} />
+        <div className="absolute bottom-6 right-8 flex flex-col items-center gap-1 opacity-40">
+          <span className="text-xs font-golos text-white tracking-widest uppercase">Scroll</span>
+          <Icon name="ChevronDown" size={16} className="text-white" />
         </div>
       </section>
 
@@ -374,6 +363,88 @@ export default function Index() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== КАК МЫ РАБОТАЕМ ===== */}
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="font-golos text-xs uppercase tracking-[0.2em] text-[var(--brand-teal)] mb-3">Процесс</p>
+            <h2 className="font-cormorant text-4xl md:text-5xl font-light text-[var(--brand-dark)]">
+              Как мы работаем
+            </h2>
+            <p className="font-golos text-sm text-foreground/50 mt-3 max-w-md mx-auto">
+              От первого звонка до сдачи объекта — прозрачно и в срок
+            </p>
+          </div>
+
+          {/* Шаги */}
+          <div className="relative">
+            {/* Линия-коннектор (desktop) */}
+            <div className="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-[var(--brand-teal)]/30 to-transparent" />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+              {[
+                {
+                  num: "01",
+                  icon: "Phone",
+                  title: "Заявка",
+                  desc: "Оставляете заявку — звоним в течение 15 минут и уточняем задачу",
+                },
+                {
+                  num: "02",
+                  icon: "Ruler",
+                  title: "Замер",
+                  desc: "Выезжаем бесплатно, делаем точные замеры и готовим коммерческое предложение",
+                },
+                {
+                  num: "03",
+                  icon: "FileText",
+                  title: "Договор",
+                  desc: "Фиксируем сроки, стоимость и гарантии — всё прописано в договоре",
+                },
+                {
+                  num: "04",
+                  icon: "Settings",
+                  title: "Монтаж",
+                  desc: "Собственные бригады выполняют работы чисто и в оговорённые сроки",
+                },
+                {
+                  num: "05",
+                  icon: "CheckCircle",
+                  title: "Сдача",
+                  desc: "Принимаете работу, подписываем акт — гарантия вступает в силу",
+                },
+              ].map((step, i) => (
+                <div key={i} className="flex flex-col items-center text-center group">
+                  {/* Иконка-круг */}
+                  <div className="relative mb-5">
+                    <div className="w-24 h-24 rounded-full bg-[var(--brand-light)] border-2 border-[var(--brand-teal)]/20 group-hover:border-[var(--brand-teal)] group-hover:bg-[var(--brand-teal)]/8 transition-all duration-300 flex items-center justify-center">
+                      <Icon name={step.icon} size={28} className="text-[var(--brand-teal)]" />
+                    </div>
+                    {/* Номер */}
+                    <div className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[var(--brand-teal)] flex items-center justify-center">
+                      <span className="font-golos text-[10px] font-bold text-white">{step.num}</span>
+                    </div>
+                  </div>
+                  <h3 className="font-cormorant text-xl font-semibold text-[var(--brand-dark)] mb-2">{step.title}</h3>
+                  <p className="font-golos text-xs text-foreground/50 leading-relaxed">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA под блоком */}
+          <div className="mt-14 text-center">
+            <a
+              href="#contacts"
+              className="btn-teal inline-flex items-center gap-2 px-8 py-3.5 rounded-md font-golos font-semibold text-sm"
+            >
+              Начать — оставить заявку
+              <Icon name="ArrowRight" size={16} />
+            </a>
           </div>
         </div>
       </section>
